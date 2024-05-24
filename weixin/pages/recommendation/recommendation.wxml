@@ -1,0 +1,100 @@
+<view >
+    <van-row>
+        <van-col offset="0" span="8">
+            <button class="JButton1" style="width:95%" wx:if="{{option==='1'}}"
+                    bind:tap="optionChange" data-option="1">冲</button>
+            <button class="JButton" style="width:95%" wx:else
+                    bind:tap="optionChange" data-option="1">冲</button>
+        </van-col>
+        <van-col offset="0" span="8">
+            <button class="JButton1" style="width:100%" wx:if="{{option==='2'}}"
+                    bind:tap="optionChange" data-option="2">稳</button>
+            <button class="JButton" style="width:100%" wx:else
+                    bind:tap="optionChange" data-option="2">稳</button>
+        </van-col>
+        <van-col offset="0" span="8">
+            <button class="JButton1" style="width:95%" wx:if="{{option==='3'}}"
+                    bind:tap="optionChange" data-option="3">保</button>
+            <button class="JButton" style="width:95%" wx:else
+                    bind:tap="optionChange" data-option="3">保</button>
+        </van-col>
+    </van-row>
+</view>
+
+<van-row>
+    <van-col span="12" offset="0">
+        <button
+                class="option-button"
+                style="width: 95%;"
+                bind:tap="onCityShow"
+        >省/市：{{selectedProvince}}/{{selectedCity}}</button>
+        <van-popup
+                show="{{ cityShow }}"
+                position="bottom"
+                overlay="true"
+        >
+            <van-area
+                    area-list="{{ areaList }}"
+                    columns-num="{{ 2 }}"
+                    title="省/市"
+
+                    bind:cancel="onCityClose"
+                    bind:confirm="onCityConfirm"
+            />
+        </van-popup>
+    </van-col>
+
+    <van-col span="12" offset="0">
+        <button
+                class="option-button"
+                style="width: 95%;"
+                bind:tap="onTypeShow"
+        >类型：{{selectedType}}</button>
+        <van-popup
+                show="{{ typeShow }}"
+                position="bottom"
+                overlay="true"
+        >
+            <van-picker
+                    show-toolbar
+                    title="类型"
+                    columns="{{ types }}"
+                    bind:cancel="onTypeClose"
+                    bind:confirm="onTypeConfirm"
+            />
+        </van-popup>
+    </van-col>
+</van-row>
+
+<view wx:for="{{loadResults}}" wx:key="page" class="page">
+    <van-row>
+        <van-col offset="0" span="18">
+            <button class="filter-item" style="width:100%"
+                    data-major="{{item.major}}"
+                    data-school="{{item.school}}"
+                    data-probability="{{item.probability}}"
+                    data-ranking="{{ranking}}"
+                    data-score="{{mark}}"
+                    bind:tap="onDetail">
+                <view class="title">{{item.major}}</view>
+                <view class="desc">{{item.province}}/{{item.city}}/{{item.school}}/{{item.batch}}/首选{{item.subjectsFirst}}/次选{{item.subjectsSecond}}</view>
+                <view class="p" wx:if="{{item.probability===''||item.probability===null}}">
+                    录取概率：暂无数据</view>
+                <view class="p" wx:else>
+                    录取概率：{{item.probability}}%</view>
+            </button>
+        </van-col>
+        <van-col offset="0" span="6">
+            <view class="right-page">
+                <button class="join-button"
+                        data-school="{{item.school}}"
+                        data-major="{{item.major}}"
+                        data-rank24="{{item.rank24}}"
+                        data-rank22="{{item.rank22}}"
+                        style="width:50%"  bind:tap="joinTable">
+                    <view class="join-text">添加</view>
+                </button>
+            </view>
+        </van-col>
+    </van-row>
+</view>

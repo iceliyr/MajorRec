@@ -1,0 +1,28 @@
+.button{
+    background-color: white;
+    margin-top: 90rpx;
+    margin-bottom: 60rpx;
+    font: large;
+    color:  #272643;
+    text-decoration: underline;
+}
+.avatar{
+    margin-top: 10rpx;
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 50%;
+}
+
+.avatar-wrapper{
+    background-color: white;
+}
+
+.weui-input{
+    color:grey;
+    font-size: small;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    text-align: center;
+    margin-bottom: 20rpx;
+}

@@ -1,0 +1,67 @@
+<van-search
+        value="{{ value }}"
+        placeholder="请输入大学名称"
+        use-action-slot
+        bind:search="onSearch"
+        bind:change="onInputChange"
+>
+    <view bind:tap="onSearch">搜索</view>
+</van-search>
+
+<van-row>
+    <van-col span="12" offset="0">
+    <button
+        class="filter-item"
+        style="width: 95%;"
+        bind:tap="onCityShow"
+    >省/市：{{selectedProvince}}/{{selectedCity}}</button>
+    <van-popup
+        show="{{ cityShow }}"
+        position="bottom"
+        overlay="true"
+    >
+        <van-area
+            area-list="{{ areaList }}"
+            columns-num="{{ 2 }}"
+            title="省/市"
+            bind:cancel="onCityClose"
+            bind:confirm="onCityConfirm"
+        />
+    </van-popup>
+    </van-col>
+
+    <van-col span="12" offset="0">
+      <button
+        class="filter-item"
+        style="width: 95%;"
+        bind:tap="onTypeShow"
+    >类型：{{selectedType}}</button>
+    <van-popup
+        show="{{ typeShow }}"
+        position="bottom"
+        overlay="true"
+    >
+    <van-picker
+        show-toolbar
+        title="类型"
+        columns="{{ types }}"
+        bind:cancel="onTypeClose"
+        bind:confirm="onTypeConfirm"
+        />
+    </van-popup>
+    </van-col>
+</van-row>
+
+
+<view class="results-container">
+    <navigator wx:for="{{loadResults}}" wx:key="loadResults" url="/pages/universityDetail/universityDetail?school={{item.school}}">
+        <view class="result-item">
+            <image class="university-icon" src="{{item.image}}" />
+            <view class="university-info">
+                <view class="university-name">{{item.school}}</view>
+                <view class="university-location" wx:if="{{item.province+'市'===item.city}}">{{item.city}}</view>
+                <view class="university-location" wx:else>{{item.province}}省{{item.city}}</view>
+            </view>
+        </view>
+    </navigator>
+</view>

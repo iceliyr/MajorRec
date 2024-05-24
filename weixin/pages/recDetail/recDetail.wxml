@@ -1,0 +1,76 @@
+<!-- 专业详情页面 -->
+<view class="container">
+    <view class="page">
+        <view class="result">
+            <view class="major-name">{{ major }}</view>
+            <view class="mini-title">开设院校</view>
+            <view class="mini-text" wx:if="{{school === '' || school === null}}">暂无数据</view>
+            <view class="mini-text" wx:else>{{ school }}</view>
+            <view class="mini-title">地理位置</view>
+            <view class="mini-text" wx:if="{{detail[0].province === '' || detail[0].province === null}}">暂无数据</view>
+            <view class="mini-text" wx:else>{{ detail[0].province }}/{{detail[0].city}}</view>
+            <view class="mini-title">批次</view>
+            <view class="mini-text" wx:if="{{detail[0].batch === '' || detail[0].batch === null}}">暂无数据</view>
+            <view class="mini-text" wx:else>{{ detail[0].batch }}</view>
+            <view class="mini-title">录取概率</view>
+            <view class="mini-text" wx:if="{{probability==='null'||probability===null||probability===''}}">暂无数据</view>
+            <view class="mini-text" wx:else>{{ probability }}%</view>
+        </view>
+    </view>
+
+    <!-- 排名表格 -->
+    <view class="page">
+        <view class="mini-title">最低位次</view>
+        <view class="table">
+            <!-- 表头 -->
+            <view class="row header">
+                <text class="cell">你的位次</text>
+                <text class="cell" >2020</text>
+                <text class="cell" >2021</text>
+                <text class="cell" >2022</text>
+                <text class="cell" >预测</text>
+            </view>
+            <!-- 表格内容 -->
+            <block wx:for="{{ detail }}" wx:key="index">
+                <view class="row">
+                    <text class="cell">{{ ranking }}</text>
+                    <text class="cell" wx:if="{{item.rank20===0||item.rank20===null}}">{{ "--" }}</text>
+                    <text class="cell" wx:else>{{ item.rank20 }}</text>
+                    <text class="cell" wx:if="{{item.rank21===0||item.rank21===null}}">{{ "--" }}</text>
+                    <text class="cell" wx:else>{{ item.rank21 }}</text>
+                    <text class="cell" wx:if="{{item.rank22===0||item.rank22===null}}">{{ "--" }}</text>
+                    <text class="cell" wx:else>{{ item.rank22 }}</text>
+                    <text class="cell" wx:if="{{item.rank24===0||item.rank24===null}}">{{ "--" }}</text>
+                    <text class="cell" wx:else>{{ item.rank24 }}</text>
+                </view>
+            </block>
+        </view>
+    </view>
+    <view class="page">
+        <view class="mini-title">最低分数</view>
+        <view class="table">
+            <!-- 表头 -->
+            <view class="row header">
+                <text class="cell">你的分数</text>
+                <text class="cell" >2020</text>
+                <text class="cell" >2021</text>
+                <text class="cell" >2022</text>
+                <text class="cell" >预测</text>
+            </view>
+            <!-- 表格内容 -->
+            <block wx:for="{{ detail }}" wx:key="index">
+                <view class="row">
+                    <text class="cell">{{ score }}</text>
+                    <text class="cell" wx:if="{{item.mark20===0||item.mark20===null}}">{{ "--" }}</text>
+                    <text class="cell" wx:else>{{ item.mark20 }}</text>
+                    <text class="cell" wx:if="{{item.mark21===0||item.mark21===null}}">{{ "--" }}</text>
+                    <text class="cell" wx:else>{{ item.mark21 }}</text>
+                    <text class="cell" wx:if="{{item.mark22===0||item.mark22===null}}">{{ "--" }}</text>
+                    <text class="cell" wx:else>{{ item.mark22 }}</text>
+                    <text class="cell" wx:if="{{item.mark24===0||item.mark24===null}}">{{ "--" }}</text>
+                    <text class="cell" wx:else>{{ item.mark24 }}</text>
+                </view>
+            </block>
+        </view>
+    </view>
+</view>

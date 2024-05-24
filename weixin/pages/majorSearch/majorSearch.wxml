@@ -1,0 +1,62 @@
+<van-search
+  value="{{ value }}"
+  placeholder="请输入专业名称"
+  show-action="true"
+  bind:cancel="toSort"
+  bind:search="onSearch"
+  bind:change="onInputChange"
+  bind:focus="toSearch"
+  bind:clear="clearKeyword"
+>
+</van-search>
+
+<view wx:if="{{currentPage === 'search'}}">
+  <van-row>
+    <van-col span="24" offset="0">
+      <van-cell-group>
+        <van-cell
+          wx:for="{{searchResults}}"
+          title="{{ item.secondSubject}}"
+          url="/pages/majorDetail/majorDetail?major={{item.secondSubject}}&level={{item.level}}"
+          is-link="true"
+          size="large"
+          bind:click="showMajor"
+        />
+      </van-cell-group>
+    </van-col>
+  </van-row>
+</view>
+
+<view wx:if="{{currentPage === 'sort'}}">
+  <view class="container">
+    <view class="page-body">
+      <view class="selected-date">当前选择：{{level}}/{{first}}/{{second}}</view>
+      <picker-view indicator-style="height: 50px;" style="width: 100%; height: 300px;" value="{{value}}" bindchange="bindChange" 	bindpickend = "	bindpickend">
+        <picker-view-column>
+          <view wx:for="{{levels}}" wx:key="{{levels}}" style="line-height: 50px; text-align: center;">{{item}}</view>
+        </picker-view-column>
+        <picker-view-column>
+          <view wx:if="{{level==='本科'}}" wx:for="{{firsts1}}" wx:key="{{firsts1}}" style="line-height: 50px; text-align: center;">{{item}}</view>
+          <view wx:if="{{level==='专科'}}" wx:for="{{firsts2}}" wx:key="{{firsts2}}" style="line-height: 50px; text-align: center;">{{item}}</view>
+        </picker-view-column>
+        <picker-view-column>
+          <view wx:for="{{seconds}}" wx:key="{{seconds}}" style="line-height: 50px; text-align: center;">{{item}}</view>
+        </picker-view-column>
+      </picker-view>
+    </view>
+  </view>
+  <van-row>
+    <van-col span="24" offset="0">
+      <van-cell-group>
+        <van-cell
+          wx:for="{{majors}}"
+          title="{{ item}}"
+          url="/pages/majorDetail/majorDetail?major={{item}}&level={{level}}"
+          is-link="true"
+          size="large"
+          bind:click="showMajor"
+        />
+      </van-cell-group>
+    </van-col>
+  </van-row>
+</view>

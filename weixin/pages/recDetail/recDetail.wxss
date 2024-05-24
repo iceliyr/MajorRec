@@ -1,0 +1,90 @@
+.line{
+    width: 100%;
+    height: 1px;
+    background-color: #e5e5e5;
+    margin-top: 21px;
+    margin-bottom: 10px;
+}
+
+.title{
+    font-size: 24px;
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 50rpx;
+}
+
+.container{
+    width: 86%;
+    height: 100%;
+    background-color: #ffffff;
+    padding: 50rpx 50rpx;
+}
+
+.content{
+    margin-top: 50rpx;
+    line-height: 1.5em;
+    font-size: 14px;
+    color: #666666;
+    margin-bottom: 50rpx;
+}
+
+.button{
+    margin-bottom: 50rpx;
+    background-color: #272643;
+    color: white;
+    font-size: small;
+    border-radius: 16px;
+}
+
+.major-name-text{
+    font-size: 18px;
+    color: #000000;
+    margin-bottom: 10rpx;
+}
+
+.mini-title{
+    font-size: 16px;
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 10rpx;
+}
+
+.major-name{
+    font-size: 36px;
+    font-weight: bold;
+    color: #000000;
+    margin-top: -20rpx;
+    margin-bottom: 30rpx;
+}
+
+.mini-text{
+    font-size: 14px;
+    color: #666666;
+    margin-bottom: 30rpx;
+}
+
+/* 表格 */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.row {
+    display: flex;
+}
+
+.header {
+    font-weight: bold;
+}
+
+.cell {
+    font-size: 12px;
+    flex: 1;
+    padding: 5px;
+    border: 0.5px solid black;
+    text-align: center;
+}
+
+.page{
+    margin-bottom: 30rpx;
+}

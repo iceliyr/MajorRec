@@ -1,0 +1,47 @@
+<!-- 专业详情页面 -->
+<view class="container">
+    <view class="page">
+        <view class="result">
+            <view class="major-name">
+                {{ school }}
+<!--                <image class="university-icon" src="{{image}}"/>-->
+            </view>
+            <view class="mini-title">位置</view>
+            <view class="mini-text" wx:if="{{province === '' || province === null}}">暂无数据</view>
+            <view class="mini-text" wx:else>{{ province }}/{{city}}</view>
+            <view class="mini-title">介绍</view>
+            <view class="mini-text" wx:if="{{message === '' || message === null}}">暂无数据</view>
+            <view class="mini-text" wx:else>{{ message }}</view>
+        </view>
+    </view>
+
+    <!-- 专业排名表格 -->
+    <view class="page">
+        <view class="mini-title">专业投档线</view>
+        <view class="table">
+            <!-- 表头 -->
+            <view class="row header">
+                <text class="cell"></text>
+                <text class="cell" bind:tap = "sortByRanking" data-option="2020">2020</text>
+                <text class="cell" bind:tap = "sortByRanking" data-option="2021">2021</text>
+                <text class="cell" bind:tap = "sortByRanking" data-option="2022">2022</text>
+                <text class="cell" bind:tap = "sortByRanking" data-option="2024">预测</text>
+            </view>
+            <!-- 表格内容 -->
+            <block wx:for="{{ majors }}" wx:key="index">
+                <view class="row">
+                    <text class="cell">{{ item.major }}</text>
+                    <text class="cell" wx:if="{{item.rank20===0||item.rank20===null}}">{{ "--" }}</text>
+                    <text class="cell" wx:else>{{ item.rank20 }}</text>
+                    <text class="cell" wx:if="{{item.rank21===0||item.rank21===null}}">{{ "--" }}</text>
+                    <text class="cell" wx:else>{{ item.rank21 }}</text>
+                    <text class="cell" wx:if="{{item.rank22===0||item.rank22===null}}">{{ "--" }}</text>
+                    <text class="cell" wx:else>{{ item.rank22 }}</text>
+                    <text class="cell" wx:if="{{item.rank24===0||item.rank24===null}}">{{ "--" }}</text>
+                    <text class="cell" wx:else>{{ item.rank24 }}</text>
+                </view>
+            </block>
+        </view>
+
+    </view>
+</view>

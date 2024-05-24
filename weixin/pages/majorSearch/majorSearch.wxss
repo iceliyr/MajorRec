@@ -1,0 +1,39 @@
+.section{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section__title{
+    font-size: 30rpx;
+    font-weight: 600;
+    margin-bottom: 10rpx;
+}
+
+.picker{
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 10px;
+}
+
+.container{
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.page-body{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.selected-date{
+    font-size: 30rpx;
+    font-weight: 600;
+    margin-bottom: 10rpx;
+}

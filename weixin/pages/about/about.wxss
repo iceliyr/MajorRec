@@ -1,0 +1,7 @@
+.lao{
+    color: red;
+    font-size: 100px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 200px;
+}

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scnu.school.mapper.ScoreMapper">
+
+    <select id="getScore" resultType="com.scnu.school.pojo.Score">
+        SELECT *
+        FROM score
+        INNER JOIN school_message ON school_message.school = score.school
+        <where>
+            <if test="score.subjectsFirst != null">
+               and score.subjects_first = #{score.subjectsFirst}
+            </if>
+            <if test="score.subjectsSecond != null">
+               and score.subjects_second = #{score.subjectsSecond}
+            </if>
+            <if test="score.school != null">
+               and score.school = #{score.school}
+            </if>
+            <if test="score.college != null">
+               and score.college = #{score.college}
+            </if>
+            <if test="score.batch != null">
+               and score.batch = #{score.batch}
+            </if>
+            <if test="score.major != null">
+               and score.major = #{score.major}
+            </if>
+            <if test="score.rank20 > 0">
+               and score.rank20 = #{score.rank20}
+            </if>
+            <if test="score.rank21 > 0">
+               and score.rank21 = #{score.rank21}
+            </if>
+            <if test="score.rank22 > 0">
+               and score.rank22 = #{score.rank22}
+            </if>
+            <if test="score.rank23 > 0">
+              and  score.rank23 = #{score.rank23}
+            </if>
+            <if test="score.rank24 > 0">
+              and  score.rank24 = #{score.rank24}
+            </if>
+            <if test="score.mark20 > 0">
+              and  score.mark20 = #{score.mark20}
+            </if>
+            <if test="score.mark21 > 0">
+              and  score.mark21 = #{score.mark21}
+            </if>
+            <if test="score.mark22 > 0">
+               and score.mark22 = #{score.mark22}
+            </if>
+            <if test="score.mark23 > 0">
+              and  score.mark23 = #{score.mark23}
+            </if>
+            <if test="score.mark24 > 0">
+              and  score.mark24 = #{score.mark24}
+            </if>
+            <if test="score.predictAccuracy > 0.0">
+              and score.predict_accuracy=#{score.predictAccuracy}
+            </if>
+            <if test="score.province != null">
+                and school_message.province=#{score.province}
+            </if>
+            <if test="score.city != null">
+                and school_message.city=#{score.city}
+            </if>
+            <if test="score.level != null">
+                and school_message.level=#{score.level}
+            </if>
+            <if test="1==1">
+                and score.rank22 between #{ranking1} and #{ranking2}
+            </if>
+        </where>
+        order by score.rank22
+        LIMIT #{pageNo}, #{pageSize}
+    </select>
+
+    <select id="getScoreToTalNum" resultType="java.lang.Integer">
+        SELECT count(*)
+        FROM score
+        INNER JOIN school_message ON school_message.school = score.school
+        <where>
+        <if test="score.subjectsFirst != null">
+            and score.subjects_first = #{score.subjectsFirst}
+        </if>
+        <if test="score.subjectsSecond != null">
+            and score.subjects_second = #{score.subjectsSecond}
+        </if>
+        <if test="score.school != null">
+            and score.school = #{score.school}
+        </if>
+        <if test="score.college != null">
+            and score.college = #{score.college}
+        </if>
+        <if test="score.batch != null">
+            and score.batch = #{score.batch}
+        </if>
+        <if test="score.major != null">
+            and score.major = #{score.major}
+        </if>
+        <if test="score.rank20 > 0">
+            and score.rank20 = #{score.rank20}
+        </if>
+        <if test="score.rank21 > 0">
+            and score.rank21 = #{score.rank21}
+        </if>
+        <if test="score.rank22 > 0">
+            and score.rank22 = #{score.rank22}
+        </if>
+        <if test="score.rank23 > 0">
+            and  score.rank23 = #{score.rank23}
+        </if>
+        <if test="score.rank24 > 0">
+            and  score.rank24 = #{score.rank24}
+        </if>
+        <if test="score.mark20 > 0">
+            and  score.mark20 = #{score.mark20}
+        </if>
+        <if test="score.mark21 > 0">
+            and  score.mark21 = #{score.mark21}
+        </if>
+        <if test="score.mark22 > 0">
+            and score.mark22 = #{score.mark22}
+        </if>
+        <if test="score.mark23 > 0">
+            and  score.mark23 = #{score.mark23}
+        </if>
+        <if test="score.mark24 > 0">
+            and  score.mark24 = #{score.mark24}
+        </if>
+        <if test="score.predictAccuracy > 0.0">
+            and score.predict_accuracy=#{score.predictAccuracy}
+        </if>
+        <if test="score.province != null">
+            and school_message.province=#{score.province}
+        </if>
+        <if test="score.city != null">
+            and school_message.city=#{score.city}
+        </if>
+        <if test="score.level != null">
+            and school_message.level=#{score.level}
+        </if>
+        <if test="1==1">
+            and score.rank22 between #{ranking1} and #{ranking2}
+        </if>
+        </where>
+    </select>
+</mapper>

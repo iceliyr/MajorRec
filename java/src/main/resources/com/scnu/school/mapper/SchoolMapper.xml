@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scnu.school.mapper.SchoolMapper">
+
+    <select id="find" resultType="com.scnu.school.pojo.SchoolMessage">
+        select * from school_message
+        <where>
+                <if test="schoolMessage.school != null">
+                    and school like concat('%', #{schoolMessage.school}, '%')
+                </if>
+                <if test="schoolMessage.province != null">
+                    and province = #{schoolMessage.province}
+                </if>
+                <if test="schoolMessage.city != null">
+                    and city = #{schoolMessage.city}
+                </if>
+                <if test="schoolMessage.level != null">
+                    and `level` = #{schoolMessage.level}
+                </if>
+        </where>
+        order by ranking
+        LIMIT #{current}, #{size}
+    </select>
+    <select id="findCount" resultType="java.lang.Integer">
+        select count(*) from school_message
+        <where>
+            <if test="school != null">
+                school like concat('%', #{school}, '%')
+            </if>
+            <if test="province != null">
+                and province = #{province}
+            </if>
+            <if test="city != null">
+                and city = #{city}
+            </if>
+            <if test="level != null">
+                and `level` = #{level}
+            </if>
+        </where>
+    </select>
+
+    <select id="find_one" resultType="com.scnu.school.pojo.SchoolMessage">
+        select * from school_message where school=#{school};
+    </select>
+
+
+</mapper>

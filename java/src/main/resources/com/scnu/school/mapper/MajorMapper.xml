@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scnu.school.mapper.MajorMapper">
+
+    <select id="majors" resultType="com.scnu.school.pojo.Major">
+        select * from major where second_subject like concat('%', #{second_subject}, '%')
+    </select>
+
+
+    <select id="findFirstSubject" resultType="java.lang.String">
+    select distinct first_subject from major where category=#{category} and `level`=#{level}
+    </select>
+
+    <select id="findSecondSubject" resultType="java.lang.String">
+    select distinct second_subject from major where  `level`=#{level} and category=#{category} and first_subject=#{first_subject};
+    </select>
+
+    <select id="findAll" resultType="com.scnu.school.pojo.Major">
+    select * from major where  `level`=#{level} and category=#{category} and first_subject=#{first_subject} and second_subject=#{second_subject};
+    </select>
+
+</mapper>

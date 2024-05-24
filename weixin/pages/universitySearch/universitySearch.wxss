@@ -1,0 +1,33 @@
+.filter-item {
+    background-color: #272643;
+    color: white;
+    font-size: x-small;
+    border-radius: 16px;
+}
+
+.results-container {
+    padding: 10px;
+}
+
+.result-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 2rpx solid #ccc;
+}
+
+.university-icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.university-name {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.university-location {
+    color: #666;
+    margin-top: 5px;
+}

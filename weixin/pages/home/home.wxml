@@ -1,0 +1,97 @@
+<view class="container">
+  <view class="info-container">
+  <van-row>
+      <van-col span="20" offset="2">
+        <van-cell-group>
+            <van-field
+                value="{{score}}"
+                label="分数"
+                left-icon="records"
+                border="{{ true }}"
+                type="number"
+                is-link="true"
+                bind:change="onScoreInput"
+                input-align="right"
+            />
+            <van-field
+                value="{{ranking}}"
+                label="排名"
+                left-icon="chart-trending-o"
+                border="{{ true }}"
+                type="number"
+                is-link="true"
+                bind:change="onRankingInput"
+                input-align="right"
+            />
+
+            <van-cell title="省份" 
+            value="{{selectedProvince}}" 
+            icon="location-o" 
+            is-link="true"
+            arrow-direction="{{arrowdirection}}"
+            bind:click="onProvinceChange"/>
+            <van-popup
+                show="{{ provinceShow }}"
+                position="bottom"
+                overlay="true"
+            >
+                <van-area
+                area-list="{{ areaList }}"
+                columns-num="{{ 1 }}"
+                title="省份"
+                bind:cancel="onProvinceClose"
+                bind:confirm="onConfirm"
+                />
+            </van-popup>
+
+            <van-cell title="首选" value="{{selectedSubjects1}}" icon="certificate" center="true" bind:click="onSubjectChange1"
+            is-link="true" arrow-direction="{{arrowdirection1}}"/>
+            <van-checkbox-group 
+            value="{{ selectedSubjects1 }}"  
+            bind:change="onChange1" max="1"
+            wx:if="{{subjectShow1===true}}">
+            <van-row>
+            <van-col offset="10" span="14">
+                <van-checkbox
+                    wx:for="{{ subjects1 }}"
+                    wx:key="index"
+                    name="{{ item }}"
+                    checked-color="#272643"
+                    custom-class="radio-group"
+                >{{ item }}</van-checkbox>
+            </van-col>
+            </van-row>
+            </van-checkbox-group>
+
+            <van-cell title="次选" value="{{selectedSubjects2}}" icon="certificate" center="true" clickable bind:click="onSubjectChange2"
+            is-link="true" arrow-direction="{{arrowdirection2}}"/>
+            <van-checkbox-group value="{{ selectedSubjects2 }}"
+            bind:change="onChange2" max="2"
+            wx:if="{{subjectShow2===true}}">
+            <van-row>
+            <van-col offset="10" span="14">
+                <van-checkbox
+                    wx:for="{{ subjects2 }}"
+                    wx:key="index"
+                    name="{{ item }}"
+                    checked-color="#272643"
+                    custom-class="radio-group"
+                >{{ item }}</van-checkbox>
+            </van-col>
+            </van-row>
+            </van-checkbox-group>
+        </van-cell-group>
+      </van-col>
+  </van-row>
+  </view>
+  <button class="filter-item" size="normal" bindtap="saveData" >保存</button>
+</view>
+ 
+<view class="grid-container">
+  <view class="grid-item" wx:for="{{functions}}" wx:key="index" bindtap="onGridItemClick" data-index="{{index}}">
+    <image class="grid-icon" src="{{item.iconUrl}}" />
+    <text class="grid-text">{{item.name}}</text>
+  </view>
+</view>
+
+

@@ -1,0 +1,73 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/recommendation/recommendation",
+    "pages/recDetail/recDetail",
+    "pages/user/user",
+    "pages/universityDetail/universityDetail",
+    "pages/universitySearch/universitySearch",
+    "pages/majorSearch/majorSearch",
+    "pages/majorDetail/majorDetail",
+    "pages/volunteer/volunteer",
+    "pages/personality/personality",
+    "pages/probability/probability",
+    "pages/about/about",
+    "pages/login/login"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#bae8e8",
+    "navigationBarTitleText": "MajorRec",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "selectedColor": "#40bfbf",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "主页",
+        "iconPath": "/image/home0.png",
+        "selectedIconPath": "/image/home.png",
+        "iconSize": "1px"
+      },
+      {
+        "pagePath": "pages/recommendation/recommendation",
+        "text": "专业推荐",
+        "iconPath": "/image/rec0.png",
+        "selectedIconPath": "/image/rec.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "我的",
+        "iconPath": "/image/user0.png",
+        "selectedIconPath": "/image/user.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+    "van-button": "vant-weapp/button",
+    "van-checkbox": "vant-weapp/checkbox",
+    "van-checkbox-group": "vant-weapp/checkbox-group",
+    "van-picker": "vant-weapp/picker",
+    "van-field": "vant-weapp/field",
+    "van-popup": "vant-weapp/popup",
+    "van-radio": "vant-weapp/radio",
+    "van-radio-group": "vant-weapp/radio-group",
+    "van-icon": "vant-weapp/icon",
+    "van-action-sheet": "vant-weapp/action-sheet",
+    "van-cell": "vant-weapp/cell",
+    "van-cell-group": "vant-weapp/cell-group",
+    "van-collapse": "vant-weapp/collapse",
+    "van-collapse-item": "vant-weapp/collapse-item",
+    "van-search": "vant-weapp/search",
+    "van-row": "vant-weapp/row",
+    "van-col": "vant-weapp/col",
+    "van-tree-select": "vant-weapp/tree-select",
+    "van-area": "vant-weapp/area",
+    "van-card": "vant-weapp/card",
+    "van-dialog": "vant-weapp/dialog"
+  }
+}

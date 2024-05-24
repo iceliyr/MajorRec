@@ -1,0 +1,81 @@
+<view class="container">
+  <!-- 欢迎页面 -->
+  <view class="page" wx:if="{{ currentPage === 'welcome' }}">
+    <text class="title">MBTI职业性格测试（93题）</text>
+    <view class="content">
+      该问卷用于揭示你是如何看待事物、如何做决定，答案无好坏之分。 问卷结果有助于了解自己的职业倾向、个性特征、人际相处的特征。 请仔细阅读每一个问题，答案直接写在题目上面。 不必对问题想的太多，根据第一感觉回答即可。 请在每个问题后面的选项中选择一个最符合你的答案。
+    </view>
+    <button class="button" bindtap="startTest">开始测试</button>
+    <button class="button" bindtap="lookRecord">查看报告</button>
+  </view>
+
+  <!-- 测试记录页面 -->
+  <view class="page" wx:if="{{ currentPage === 'record' }}">
+    <view class="result">
+      <text class="result-text">您的MBTI性格类型</text>
+      <view class="mbti-type">{{ record }}</view>
+      <view class="mini-title">基本描述</view>
+      <view class="mini-text">{{character}}</view>
+      <view class="mini-title">职业倾向</view>
+      <view class="mini-text">{{job}}</view>
+      <view class="mini-title">推荐专业</view>
+      <view class="mini-text">{{major}}</view>
+
+      <button class="button" bindtap="toWelcome">返回</button>
+    </view>
+  </view>
+
+
+  <!-- 问题页面 -->
+  <view class="page" wx:if="{{ currentPage === 'question' }}">
+    <view class="question-text">{{currentQuestion.id}}. {{ currentQuestion.question }}</view>
+      <view wx:if="{{currentAnswer === 'A'}}">
+        <button class="selectedOption" style="width:100%" bindtap="selectAnswer" data-option="A">
+          A：{{ currentQuestion.optionA }}</button>
+        <button class="option" style="width:100%" bindtap="selectAnswer" data-option="B">
+          B：{{ currentQuestion.optionB }}</button>
+      </view>
+      <view wx:elif="{{currentAnswer === 'B'}}">
+        <button class="option" style="width:100%" bindtap="selectAnswer" data-option="A">
+          A：{{ currentQuestion.optionA }}</button>
+        <button class="selectedOption" style="width:100%" bindtap="selectAnswer" data-option="B">
+          B：{{ currentQuestion.optionB }}</button>
+      </view>
+      <view wx:else>
+        <button class="option" style="width:100%" bindtap="selectAnswer" data-option="A">
+          A：{{ currentQuestion.optionA }}</button>
+        <button class="option" style="width:100%" bindtap="selectAnswer" data-option="B">
+          B：{{ currentQuestion.optionB }}</button>
+      </view>
+      <button class="button" bindtap="goBack">返回上一题</button>
+      <button class="button" bindtap="onTipShow">退出测试</button>
+<!--      <van-dialog-->
+<!--              title="提示"-->
+<!--              show="{{ tipShow }}"-->
+<!--              message="确认要放弃测试吗？"-->
+<!--              show-cancel-button-->
+<!--              close-on-click-overlay="true"-->
+<!--              bind:close="onClose"-->
+<!--              bind:confirm="toWelcome"-->
+<!--      >-->
+<!--        <image src="https://img.yzcdn.cn/1.jpg" />-->
+<!--      </van-dialog>-->
+  </view>
+
+  <!-- 结果页面 -->
+  <view class="page" wx:if="{{ currentPage === 'result' }}">
+    <view class="result">
+
+      <text class="result-text">您的MBTI性格类型</text>
+      <view class="mbti-type">{{ mbtiResult }}</view>
+      <view class="mini-title">基本描述</view>
+      <view class="mini-text">{{character}}</view>
+      <view class="mini-title">职业倾向</view>
+      <view class="mini-text">{{job}}</view>
+      <view class="mini-title">推荐专业</view>
+        <view class="mini-text">{{major}}</view>
+
+      <button class="button" bindtap="toWelcome">返回</button>
+    </view>
+  </view>
+</view>

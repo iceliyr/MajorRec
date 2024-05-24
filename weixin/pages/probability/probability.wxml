@@ -1,0 +1,58 @@
+<view class="container">
+    <view class="desc-container">
+        <view class="desc">输入目标院校 分析录取概率</view>
+        <view class="message">{{province}}/{{subjectsFirst}}</view>
+    </view>
+    <view class="input-container">
+        <input class="input" placeholder="请输入排名" type="number" bindinput="onInputRanking" />
+        <input class="input" placeholder="请输入目标院校" type="text" bindinput="onInputSchool" />
+
+        <button class="button" bindtap="submit">提交</button>
+    </view>
+    <view wx:if="{{analyzed}}" class="result">
+        <view>录取概率：{{probability}}%</view>
+    </view>
+</view>
+<view class="container-detail" wx:if="{{isShow===true}}">
+    <view class="page">
+        <view class="result">
+            <view class="mini-title">位次最低专业</view>
+            <view class="mini-text" wx:if="{{major===null||major===''}}">暂无数据</view>
+            <view class="mini-text" wx:else>{{ major }}</view>
+        </view>
+    </view>
+    <view class="page">
+        <view class="mini-title">专业位次</view>
+        <view class="table">
+            <!-- 表头 -->
+            <view class="row header">
+                <text class="cell">你的位次</text>
+                <text class="cell" >2020</text>
+                <text class="cell" >2021</text>
+                <text class="cell" >2022</text>
+                <text class="cell" >预测</text>
+            </view>
+            <!-- 表格内容 -->
+            <block>
+                <view class="row">
+                    <text class="cell">{{ ranking }}</text>
+                    <text class="cell" wx:if="{{majors.rank20===0||majors.rank20===null}}">{{ "--" }}</text>
+                    <text class="cell" wx:else>{{ majors.rank20 }}</text>
+                    <text class="cell" wx:if="{{majors.rank21===0||majors.rank21===null}}">{{ "--" }}</text>
+                    <text class="cell" wx:else>{{ majors.rank21 }}</text>
+                    <text class="cell" wx:if="{{majors.rank22===0||majors.rank22===null}}">{{ "--" }}</text>
+                    <text class="cell" wx:else>{{ majors.rank22 }}</text>
+                    <text class="cell" wx:if="{{majors.rank24===0||majors.rank24===null}}">{{ "--" }}</text>
+                    <text class="cell" wx:else>{{ majors.rank24 }}</text>
+                </view>
+            </block>
+        </view>
+        <view class="page">
+            <view class="result">
+                <view class="mini-title">录取概率</view>
+                <view class="mini-text" wx:if="{{probability==='null'||probability===null||probability===''}}">暂无数据</view>
+                <view class="mini-text" wx:else>{{ probability }}%</view>
+            </view>
+        </view>
+    </view>
+</view>

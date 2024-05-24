@@ -1,0 +1,22 @@
+<button wx:if="{{isLogin===false}}" class="button" bindtap="login">
+    点击登录
+</button>
+<button wx:if="{{isLogin===true}}" class="avatar-wrapper" bindtap="login"
+    >
+    <image class="avatar" src="{{avatarUrl}}"></image>
+    <view class="weui-input">{{nickname}}</view>
+</button>
+
+<van-cell-group>
+    <van-cell
+            title="关于我们"
+            is-link
+            url="/pages/about/about"
+            bind:click="showMajor"
+    />
+    <van-cell
+            title="退出登录"
+            is-link
+            bind:click = "onLogout"
+    />
+</van-cell-group>
